@@ -13,3 +13,10 @@ class DataIngestionConfig:
     #     self.root_dir = Path(self.root_dir).resolve()
     #     self.local_data_file = Path(self.local_data_file).resolve()
     #     self.unzip_dir = Path(self.unzip_dir).resolve()
+
+@dataclass(frozen=True)
+class DataValidationConfig:
+    root_dir: Path
+    STATUS_FILE: str
+    unzip_data_dir: Path
+    all_schema: dict
