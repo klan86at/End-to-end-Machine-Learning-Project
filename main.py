@@ -3,6 +3,7 @@ from mlProject.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipe
 from mlProject.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
 from mlProject.pipeline.stage_03_data_transformation import DataTransformationTrainingPipeline
 from mlProject.pipeline.stage_04_model_trainer import ModelTrainerPipeline
+from mlProject.pipeline.stage_05_model_evaluation import ModelEvaluationTrainingPipeline
 
 
 STAGE_NAME = "Data Ingestion Stage"
@@ -48,4 +49,15 @@ except Exception as e:
     logger.exception(e)
     raise e
 
-# This code orchestrates the data ingestion, validation, transformation, and model training stages of a machine learning pipeline.
+
+STAGE_NAME = "Model Evaluation Stage"
+try:
+    logger.info(f">>>>>>>>>> stage {STAGE_NAME} started <<<<<<<<<<<")
+    obj = ModelEvaluationTrainingPipeline()
+    obj.main()
+    logger.info(f">>>>>>>>>> stage {STAGE_NAME} completed <<<<<<<<<<<\n\nX==========X")
+except Exception as e:
+    logger.exception(e)
+    raise e
+
+# This code orchestrates the data ingestion, validation, transformation, model training, model evaluation stages of a machine learning pipeline.
