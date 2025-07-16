@@ -135,6 +135,11 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+# Ignore all .joblib files by default
+*.joblib
+
+# Except for the production model
+!artifacts/model_trainer/model.joblib
 .env
 .envrc
 .venv
