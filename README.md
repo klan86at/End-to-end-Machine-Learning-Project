@@ -1,142 +1,128 @@
 # End-to-end-Machine-Learning-Project
 
-## Workflows
-1. Update config.yaml
-2. Update schema.yaml
-3. Update params.yaml
-4. Update the entity
-5. Update the configuration manager in src config
-6. update the components
-7. Update the pipeline
-8. Update the main.py
-9. Update the app.py
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 
+## Overview
 
-How to Run
+The 'End-to-end-Machine-Learning-Project' offers a comprehensive, production-ready template for building, tracking, and deploying machine learning models. It meticulously outlines the entire ML lifecycle, from initial configuration and data ingestion (as seen in `config/config.yaml`, `artifacts/data_ingestion`) through to a fully containerized application deployed in the cloud. This project is engineered with robust MLOps practices at its core, leveraging MLflow and Dagshub for sophisticated experiment tracking, model versioning, and remote artifact management.
 
-## STEPS
-clone the repository
+At its core, the project champions an automated CI/CD pipeline, executed via GitHub Actions, which meticulously handles everything from building Docker images (as defined by `Dockerfile`) and pushing them to AWS ECR, to deploying the final containerized application onto an AWS EC2 instance. This robust setup, combined with structured project components (`src/mlProject`), dedicated research notebooks (`research/`), and a functional web interface (`app.py`, `templates/`), ensures a seamless transition from experimentation to a scalable, production-grade application. It is purpose-built for machine learning engineers and data scientists who seek a clear, repeatable, and automated pathway to deploy their models reliably into real-world production environments.
 
-```bash
-https://github.com/klan86at/End-to-end-Machine-Learning-Project.git
-```
-## STEP 01 create a conda enviroment after opening repository
+## ✨ Features
+
+*   🚀 **End-to-End ML Lifecycle:** Offers a comprehensive template covering development, tracking, and scalable deployment of ML models.
+*   📊 **MLOps with MLflow & Dagshub:** Integrates MLOps practices for robust experiment tracking and remote model management.
+*   ☁️ **Automated AWS CI/CD:** Features a powerful CI/CD pipeline via GitHub Actions for seamless deployment to AWS ECR and EC2 instances.
+*   🐳 **Containerized & Scalable Deployment:** Utilizes Docker for building and deploying containerized machine learning applications.
+*   🏗️ **Modular ML Workflow:** Employs a structured `src` directory with components and pipelines for maintainable and configurable ML development.
+*   ⚙️ **Declarative Configuration:** Manages project settings, parameters, and data schemas using `config.yaml`, `params.yaml`, and `schema.yaml`.
+*   🧠 **Interactive Research & Development:** Provides Jupyter notebooks to guide through data ingestion, validation, transformation, training, and evaluation stages.
+
+## 📦 Installation
 
 ```bash
-conda create -n myenv python=3.12 -y
-```
-```bash
-conda activate myenv
+git clone https://github.com/klan86at/End-to-end-Machine-Learning-Project.git
+cd End-to-end-Machine-Learning-Project
 ```
 
-## STEP 02 Install the requirements.txt
+## 🚀 Quick Start
 
-```bash
-pip install -r requirements.txt
-```
+To quickly get started with this project:
 
-```bash
-# Run the following command
-python app.py
-```
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/End-to-end-Machine-Learning-Project.git
+    cd End-to-end-Machine-Learning-Project
+    ```
+2.  Set up a virtual environment and install dependencies:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    pip install -r requirements.txt
+    ```
+3.  Execute the end-to-end ML pipeline, which processes data and trains a model, tracking experiments with MLflow/Dagshub:
+    ```bash
+    python main.py
+    ```
+4.  Launch the prediction web application for inference:
+    ```bash
+    python app.py
+    ```
+    Access the application at `http://127.0.0.1:5000` in your web browser.
 
-Now,
-```bash
-open up your local host & port
-```
-## MLFLOW
-[documentation](https://mlflow.org/docs/latest/index.html)
-
-#### cmd
--mlflow ui
-
-## dagshub
-[dagshub](https://dagshub.com/)
-MLFLOW_TRACKING_URI=https://dagshub.com/klan86at/End-to-end-Machine-Learning-Project.mlflow \
-MLFLOW_TRACKING_USERNAME=klan86at \
-MLFLOW_TRACKING_PASSWORD=332b51719afa1eb8c7b19f01b95fd0d1def95031 \
-python script.py
-
-Run this to export as env variables:
-
-```bash
-export MLFLOW_TRACKING_URI=https://dagshub.com/klan86at/End-to-end-Machine-Learning-Project.mlflow
-
-export MLFLOW_TRACKING_USERNAME=klan86at
-
-export MLFLOW_TRACKING_PASSWORD=332b51719afa1eb8c7b19f01b95fd0d1def95031
+## 📁 Project Structure
 
 ```
+End-to-end-Machine-Learning-Project/
+├── artifacts
+│   └── data_ingestion
+│       ├── data.zip
+│       └── winequality-red.csv
+├── config
+│   └── config.yaml
+├── research
+│   ├── 01_data_ingestion.ipynb
+│   ├── 02_data_validation.ipynb
+│   ├── 03_data_transformation.ipynb
+│   ├── 04_model_trainer.ipynb
+│   ├── 05_model_evaluation.ipynb
+│   └── trials.ipynb
+├── src
+│   └── mlProject
+│       ├── components
+│       │   ├── __init__.py
+│       │   ├── data_ingestion.py
+│       │   ├── data_transformation.py
+│       │   ├── data_validation.py
+│       │   ├── model_evaluation.py
+│       │   └── model_trainer.py
+│       ├── config
+│       │   ├── __init__.py
+│       │   └── configuration.py
+│       ├── constants
+│       │   └── __init__.py
+│       ├── entity
+│       │   ├── __init__.py
+│       │   └── config_entity.py
+│       ├── pipeline
+│       │   ├── __init__.py
+│       │   ├── prediction.py
+│       │   ├── stage_01_data_ingestion.py
+│       │   ├── stage_02_data_validation.py
+│       │   ├── stage_03_data_transformation.py
+│       │   ├── stage_04_model_trainer.py
+│       │   └── stage_05_model_evaluation.py
+│       ├── utils
+│       │   ├── __init__.py
+│       │   └── common.py
+│       └── __init__.py
+├── templates
+│   ├── index.html
+│   └── results.html
+├── .dvcignore
+├── .gitignore
+├── Dockerfile
+├── README.md
+├── app.py
+├── clean-joblib.sh
+├── main.py
+├── params.yaml
+├── requirements.txt
+├── requirements_backup.txt
+├── schema.yaml
+└── template.py
+```
 
-# AWS-CICD-Deployment-with-Github-Actions
+## 🤝 Contributing
 
-## 1. Login to AWS console.
+Contributions are welcome! Please open an issue or submit a pull request.
 
-## 2. Create IAM user for deployment
+1. Fork the repository at [https://github.com/klan86at/End-to-end-Machine-Learning-Project.git](https://github.com/klan86at/End-to-end-Machine-Learning-Project.git)
+2. Create your feature branch (`git checkout -b feature/my-feature`)
+3. Commit your changes (`git commit -m 'Add my feature'`)
+4. Push to the branch (`git push origin feature/my-feature`)
+5. Open a Pull Request
 
-	#with specific access
+## 📄 License
 
-	1. EC2 access : It is virtual machine
-
-	2. ECR: Elastic Container registry to save your docker image in aws
-
-
-	#Description: About the deployment
-
-	1. Build docker image of the source code
-
-	2. Push your docker image to ECR
-
-	3. Launch Your EC2 
-
-	4. Pull Your image from ECR in EC2
-
-	5. Lauch your docker image in EC2
-
-	#Policy:
-
-	1. AmazonEC2ContainerRegistryFullAccess
-
-	2. AmazonEC2FullAccess
-
-	
-## 3. Create ECR repo to store/save docker image
-    - Save the URI: 343218192053.dkr.ecr.us-east-2.amazonaws.com/mlken
-
-	
-## 4. Create EC2 machine (Ubuntu) 
-
-## 5. Open EC2 and Install docker in EC2 Machine:
-	
-	
-	#optinal
-
-	sudo apt-get update -y
-
-	sudo apt-get upgrade
-	
-	#required
-
-	curl -fsSL https://get.docker.com -o get-docker.sh
-
-	sudo sh get-docker.sh
-
-	sudo usermod -aG docker ubuntu
-
-	newgrp docker
-	
-# 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
-
-
-# 7. Setup github secrets:
-
-    AWS_ACCESS_KEY_ID=
-
-    AWS_SECRET_ACCESS_KEY=
-
-    AWS_REGION = us-east-1
-
-    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
-
-    ECR_REPOSITORY_NAME = simple-app
+This project is open source. See the [LICENSE](LICENSE) file for details.
