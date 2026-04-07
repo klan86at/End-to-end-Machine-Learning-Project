@@ -1,5 +1,7 @@
 # End-to-end-Machine-Learning-Project
 
+## About
+This project predicts wine quality (on a scale of 0–10) using physicochemical features like acidity, pH, and alcohol content. The model leverages Elastic Net regression to balance feature selection (L1 regularization) and multicollinearity handling (L2 regularization), achieving optimal performance.
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 
 ## Overview
